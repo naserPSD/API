@@ -16,3 +16,8 @@ Postman Api checking :
 
 <img width="845" alt="sch" src="https://github.com/naserPSD/API/assets/149578308/5d881396-222a-4ad8-b01a-eb4a01ac3205">
 
+
+Ip test:
+
+
+![Screenshot (231)](https://github.com/naserPSD/API/assets/149578308/bf8e18df-39ef-4f25-8707-3f09b05b009e)
