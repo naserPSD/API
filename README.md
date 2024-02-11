@@ -1,5 +1,5 @@
 # API
-I made a simple user api by using Spring Boot application for user response in backend and use the MySql Workbench for the data storage. My api port number is http://localhost:9090/api/users. If any one want to access it should be used the ip addrss instead of the localhost:9090. I worked on 192.168.0.107 Ipv4.
+I made a simple user api by using Spring Boot application for user response in backend and use the MySql Workbench for the data storage. My api port number is http://localhost:9090/api/users. If any one wants to access it should be used that ip addrss of the monitoring computer instead of the localhost:9090. 
 
 
 
@@ -20,4 +20,5 @@ Postman Api checking :
 Ip test:
 
 
-![Screenshot (231)](https://github.com/naserPSD/API/assets/149578308/bf8e18df-39ef-4f25-8707-3f09b05b009e)
+<img width="787" alt="ys" src="https://github.com/naserPSD/API/assets/149578308/a4f2d13d-8dd7-40f6-8227-923045e3c1d7">
+
