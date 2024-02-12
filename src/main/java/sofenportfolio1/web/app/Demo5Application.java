@@ -1,7 +1,9 @@
 package sofenportfolio1.web.app;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Demo5Application {
@@ -10,4 +12,9 @@ public class Demo5Application {
 		SpringApplication.run(Demo5Application.class, args);
 	}
 
+    @Bean
+    public ModelMapper modelMapper() {
+
+		return new ModelMapper();
+	}
 }
