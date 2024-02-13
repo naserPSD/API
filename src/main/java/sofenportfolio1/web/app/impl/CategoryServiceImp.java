@@ -1,17 +1,17 @@
 package sofenportfolio1.web.app.impl;
-
+import sofenportfolio1.web.app.exceptions.*;
 import java.util.List;
-import java.util.Locale.Category;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import sofenportfolio1.web.app.entities.User;
-import sofenportfolio1.web.app.exceptions.ResourceNotFoundException;
+import org.springframework.stereotype.Service;
+import sofenportfolio1.web.app.entities.*;
 import sofenportfolio1.web.app.payloads.CategoryDto;
-import sofenportfolio1.web.app.repositories.CategoryRepo;
+import sofenportfolio1.web.app.payloads.UserDto;
+import sofenportfolio1.web.app.repositories.*;
 import sofenportfolio1.web.app.services.CategoryService;
-
+@Service
 public class CategoryServiceImp implements CategoryService {
 	@Autowired
 	private CategoryRepo categoryRepo;
@@ -20,38 +20,40 @@ public class CategoryServiceImp implements CategoryService {
 
 	@Override
 	public CategoryDto createCategory(CategoryDto categoryDto) {
-		Category cat = this.modelMapper.map(categoryDto, Category.class);
-		Category addedCat = this.categoryRepo.save(cat);
+		Category category = this.modelMapper.map(categoryDto, Category.class);
+		Category addedCategory = this.categoryRepo.save(category);
 
-		return this.modelMapper.map(addedCat, CategoryDto.class);
+		return this.modelMapper.map(addedCategory, CategoryDto.class);
 	}
 
 	@Override
 	public CategoryDto updateCategory(CategoryDto categoryDto, Integer categoryId) {
-		Category cat = this.categoryRepo.findById(categoryId).orElseThrow(()->new ResourceNotFoundException("Category","category id", categoryId));
-		cat.setCategoryTitle(categoryDto.getCategoryTitle());
-		cat.setCategoryDescription(categoryDto.getCategoryDescription());
-		Category updatedcat = this.categoryRepo.save(cat);
-		return this.modelMapper.map(updatedcat, CategoryDto.class);
+		
+
+		Category category = this.categoryRepo.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Category","categoryid", categoryId));
+		category.setCategoryDescription(categoryDto.getCategoryDescription());
+		Category updatedcategory = this.categoryRepo.save(category);
+		return this.modelMapper.map(updatedcategory, CategoryDto.class);
 	}
 
 	@Override
 	public void deleteCategory(Integer categoryId) {
-		// TODO Auto-generated method stub
-
+		Category category = this.categoryRepo.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Category","categoryid", categoryId));
+       this.categoryRepo.delete(category);
 	}
-	
 
 	@Override
 	public CategoryDto getCategory(Integer categoryId) {
-		// TODO Auto-generated method stub
-		return null;
+		Category category = this.categoryRepo.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Category","categoryid", categoryId));
+		return this.modelMapper.map(category, CategoryDto.class);
 	}
 
 	@Override
 	public List<CategoryDto> getCategories() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Category> categories = this.categoryRepo.findAll();
+		 List<CategoryDto> catDtos= categories.stream().map((category)->this.modelMapper.map(category, CategoryDto.class)).collect(Collectors.toList());
+		return catDtos;
+	
 	}
 
 }

@@ -1,6 +1,5 @@
 package sofenportfolio1.web.app.services;
 import java.util.List;
-
 import sofenportfolio1.web.app.payloads.UserDto;
 
 public interface UserService {

@@ -1,15 +1,14 @@
 package sofenportfolio1.web.app.payloads;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import lombok.Setter;
 import lombok.Getter;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 
 @NoArgsConstructor
-@Setter
 @Getter
+@Setter
 public class UserDto {
 	private int id;
 	@NotEmpty
