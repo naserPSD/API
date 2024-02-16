@@ -13,7 +13,7 @@ public class Demo5Application {
 	}
 
     @Bean
-    public ModelMapper modelMapper() {
+    ModelMapper modelMapper() {
 
 		return new ModelMapper();
 	}

@@ -17,7 +17,7 @@ public class UserDto {
 	@Email(message = "Email address is not valid !!")
 	private String email;
 	@NotEmpty
-	@Size(min = 3, max = 10,message = "Password must be min of 3 chars and max of 10 chars !!")
+	@Size(min = 3, max=10 ,message = "Password must be min of 3 and max 10 chars !!")
 	private String password;
 	@NotEmpty
 	private String about;

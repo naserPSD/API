@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import sofenportfolio1.web.app.payloads.ApiResponse;
 import sofenportfolio1.web.app.payloads.CategoryDto;
 import sofenportfolio1.web.app.services.CategoryService;
@@ -23,14 +24,14 @@ public class CategoryController {
 	@Autowired
 private CategoryService categoryService;	//create
 	@PostMapping("/")
-	public ResponseEntity<CategoryDto> createCategory(@RequestBody CategoryDto categoryDto)
+	public ResponseEntity<CategoryDto> createCategory(@Valid @RequestBody CategoryDto categoryDto)
 	{
 		CategoryDto createCategory =  this.categoryService.createCategory(categoryDto);
 		return new ResponseEntity<CategoryDto>(createCategory, HttpStatus.CREATED) ;
 	}
 	//update
 	@PutMapping("/{categoryId}")
-	public ResponseEntity<CategoryDto> updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable Integer categoryId)
+	public ResponseEntity<CategoryDto> updateCategory(@Valid @RequestBody CategoryDto categoryDto, @PathVariable Integer categoryId)
 	{
 		CategoryDto updatedCategory =  this.categoryService.updateCategory(categoryDto,categoryId);
 		return new ResponseEntity<CategoryDto>(updatedCategory, HttpStatus.OK) ;
